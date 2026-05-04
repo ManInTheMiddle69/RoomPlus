@@ -11,7 +11,7 @@
             box-sizing: border-box;
         }
 
-        body {
+        .analytics-body {
             font-family: 'Segoe UI', 'Inter', 'Poppins', system-ui, sans-serif;
             background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
             min-height: 100vh;
@@ -21,7 +21,7 @@
         /* Header Section */
         .analytics-header {
             margin-bottom: 30px;
-            animation: fadeInUp 0.5s ease-out;
+            animation: analytics-fadeInUp 0.5s ease-out;
         }
 
         .analytics-header h1 {
@@ -39,15 +39,15 @@
         }
 
         /* Stats Cards Grid */
-        .stats-grid {
+        .analytics-statsGrid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 25px;
             margin-bottom: 30px;
-            animation: fadeInUp 0.5s ease-out 0.1s backwards;
+            animation: analytics-fadeInUp 0.5s ease-out 0.1s backwards;
         }
 
-        .stat-card {
+        .analytics-statCard {
             background: white;
             border-radius: 20px;
             padding: 25px;
@@ -57,7 +57,7 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(59, 130, 246, 0.1);
         }
 
-        .stat-card::before {
+        .analytics-statCard::before {
             content: '';
             position: absolute;
             top: 0;
@@ -69,34 +69,33 @@
             transition: transform 0.3s ease;
         }
 
-        .stat-card:hover::before {
+        .analytics-statCard:hover::before {
             transform: scaleX(1);
         }
 
-        .stat-card:hover {
+        .analytics-statCard:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 30px rgba(59, 130, 246, 0.1), 0 0 0 1px rgba(59, 130, 246, 0.2);
         }
 
-        .stat-icon {
+        .analytics-statIcon {
             font-size: 2.5rem;
             margin-bottom: 15px;
             display: inline-block;
-            animation: float 3s ease-in-out infinite;
+            animation: analytics-float 3s ease-in-out infinite;
         }
 
-        .stat-value {
+        .analytics-statValue {
             font-size: 2.5rem;
             font-weight: 800;
-            color: #1e293b;
-            margin-bottom: 8px;
             background: linear-gradient(135deg, #1e293b, #3b82f6);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 8px;
         }
 
-        .stat-label {
+        .analytics-statLabel {
             color: #64748b;
             font-size: 0.85rem;
             font-weight: 600;
@@ -104,7 +103,7 @@
             letter-spacing: 1px;
         }
 
-        .stat-trend {
+        .analytics-statTrend {
             display: inline-block;
             margin-top: 10px;
             font-size: 0.8rem;
@@ -115,28 +114,28 @@
         }
 
         /* Charts Container */
-        .charts-container {
+        .analytics-chartsContainer {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
             gap: 25px;
             margin-bottom: 30px;
         }
 
-        .chart-card {
+        .analytics-chartCard {
             background: white;
             border-radius: 20px;
             padding: 25px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(59, 130, 246, 0.1);
-            animation: fadeInUp 0.5s ease-out 0.15s backwards;
+            animation: analytics-fadeInUp 0.5s ease-out 0.15s backwards;
         }
 
-        .chart-card:hover {
+        .analytics-chartCard:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 25px rgba(59, 130, 246, 0.08), 0 0 0 1px rgba(59, 130, 246, 0.2);
         }
 
-        .chart-title {
+        .analytics-chartTitle {
             font-size: 1.2rem;
             font-weight: 700;
             color: #1e293b;
@@ -149,26 +148,26 @@
         }
 
         /* CSS Bar Chart */
-        .bar-chart {
+        .analytics-barChart {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .bar-item {
+        .analytics-barItem {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .bar-label {
+        .analytics-barLabel {
             width: 100px;
             font-weight: 600;
             color: #475569;
             font-size: 0.85rem;
         }
 
-        .bar-container {
+        .analytics-barContainer {
             flex: 1;
             height: 35px;
             background: #f1f5f9;
@@ -177,7 +176,7 @@
             position: relative;
         }
 
-        .bar-fill {
+        .analytics-barFill {
             height: 100%;
             background: linear-gradient(90deg, #3b82f6, #60a5fa);
             border-radius: 10px;
@@ -188,12 +187,11 @@
             color: white;
             font-weight: 600;
             font-size: 0.8rem;
-            transition: width 0.5s ease;
-            animation: fillBar 1s ease-out;
+            animation: analytics-fillBar 1s ease-out;
         }
 
         /* Donut Chart CSS */
-        .donut-container {
+        .analytics-donutContainer {
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -201,7 +199,7 @@
             gap: 30px;
         }
 
-        .donut {
+        .analytics-donut {
             width: 150px;
             height: 150px;
             border-radius: 50%;
@@ -212,10 +210,10 @@
                 #f59e0b 55% 75%,
                 #ef4444 75% 100%
             );
-            animation: rotateDonut 0.8s ease-out;
+            animation: analytics-rotateDonut 0.8s ease-out;
         }
 
-        .donut::before {
+        .analytics-donut::before {
             content: '';
             position: absolute;
             top: 50%;
@@ -227,7 +225,7 @@
             border-radius: 50%;
         }
 
-        .donut-label {
+        .analytics-donutLabel {
             text-align: center;
             margin-top: 15px;
             font-size: 0.8rem;
@@ -235,95 +233,95 @@
             color: #475569;
         }
 
-        .legend {
+        .analytics-legend {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
 
-        .legend-item {
+        .analytics-legendItem {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 0.85rem;
         }
 
-        .legend-color {
+        .analytics-legendColor {
             width: 20px;
             height: 20px;
             border-radius: 4px;
         }
 
         /* Mini Cards Grid */
-        .mini-grid {
+        .analytics-miniGrid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
 
-        .mini-card {
+        .analytics-miniCard {
             background: white;
             border-radius: 15px;
             padding: 20px;
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(59, 130, 246, 0.1);
-            animation: fadeInUp 0.5s ease-out 0.2s backwards;
+            animation: analytics-fadeInUp 0.5s ease-out 0.2s backwards;
         }
 
-        .mini-card:hover {
+        .analytics-miniCard:hover {
             transform: scale(1.05);
             box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
         }
 
-        .mini-card .value {
+        .analytics-miniCard .analytics-miniValue {
             font-size: 1.8rem;
             font-weight: 800;
             color: #3b82f6;
         }
 
-        .mini-card .label {
+        .analytics-miniCard .analytics-miniLabel {
             font-size: 0.8rem;
             color: #64748b;
             margin-top: 5px;
         }
 
         /* Progress Bar */
-        .progress-section {
+        .analytics-progressSection {
             background: white;
             border-radius: 20px;
             padding: 25px;
             margin-bottom: 30px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(59, 130, 246, 0.1);
-            animation: fadeInUp 0.5s ease-out 0.25s backwards;
+            animation: analytics-fadeInUp 0.5s ease-out 0.25s backwards;
         }
 
-        .progress-title {
+        .analytics-progressTitle {
             font-weight: 700;
             margin-bottom: 20px;
             color: #1e293b;
         }
 
-        .progress-item {
+        .analytics-progressItem {
             margin-bottom: 20px;
         }
 
-        .progress-header {
+        .analytics-progressHeader {
             display: flex;
             justify-content: space-between;
             margin-bottom: 8px;
             font-size: 0.85rem;
         }
 
-        .progress-bar-bg {
+        .analytics-progressBarBg {
             height: 25px;
             background: #f1f5f9;
             border-radius: 12px;
             overflow: hidden;
         }
 
-        .progress-fill {
+        .analytics-progressFill {
             height: 100%;
             background: linear-gradient(90deg, #3b82f6, #60a5fa);
             border-radius: 12px;
@@ -334,76 +332,39 @@
             color: white;
             font-size: 0.75rem;
             font-weight: 600;
-            animation: fillProgress 1s ease-out;
+            animation: analytics-fillProgress 1s ease-out;
         }
 
         /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes analytics-fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes float {
+        @keyframes analytics-float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
         }
 
-        @keyframes fillBar {
+        @keyframes analytics-fillBar {
             from { width: 0; }
-            to { width: var(--final-width); }
         }
 
-        @keyframes fillProgress {
+        @keyframes analytics-fillProgress {
             from { width: 0; }
-            to { width: var(--final-width); }
         }
 
-        @keyframes rotateDonut {
+        @keyframes analytics-rotateDonut {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            body {
-                padding: 20px;
-            }
-            .charts-container {
-                grid-template-columns: 1fr;
-            }
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #e2e8f0;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-            border-radius: 10px;
-        }
-
         /* Table for top products */
-        .top-products {
+        .analytics-topProducts {
             margin-top: 20px;
         }
 
-        .product-row {
+        .analytics-productRow {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -412,264 +373,188 @@
             transition: all 0.2s ease;
         }
 
-        .product-row:hover {
+        .analytics-productRow:hover {
             background: #f8fafc;
             transform: translateX(5px);
         }
 
-        .product-name {
+        .analytics-productName {
             font-weight: 600;
             color: #1e293b;
         }
 
-        .product-sales {
+        .analytics-productSales {
             color: #3b82f6;
             font-weight: 700;
         }
+
+        @media (max-width: 768px) {
+            .analytics-chartsContainer { grid-template-columns: 1fr; }
+            .analytics-statsGrid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
-<body>
+<body class="analytics-body">
     <div class="analytics-header">
         <h1>📊 Analytics Dashboard</h1>
         <p>Real-time business intelligence & performance metrics</p>
     </div>
 
     <!-- Stats Cards -->
-    <div class="stats-grid">
-        <div class="stat-card">
-            <div class="stat-icon">💰</div>
-            <div class="stat-value">$124,582</div>
-            <div class="stat-label">Total Revenue</div>
-            <div class="stat-trend">↑ +12.5% vs last month</div>
+    <div class="analytics-statsGrid">
+        <div class="analytics-statCard">
+            <div class="analytics-statIcon">💰</div>
+            <div class="analytics-statValue">$124,582</div>
+            <div class="analytics-statLabel">Total Revenue</div>
+            <div class="analytics-statTrend">↑ +12.5% vs last month</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon">📦</div>
-            <div class="stat-value">1,847</div>
-            <div class="stat-label">Total Orders</div>
-            <div class="stat-trend">↑ +8.3% vs last month</div>
+        <div class="analytics-statCard">
+            <div class="analytics-statIcon">📦</div>
+            <div class="analytics-statValue">1,847</div>
+            <div class="analytics-statLabel">Total Orders</div>
+            <div class="analytics-statTrend">↑ +8.3% vs last month</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon">👥</div>
-            <div class="stat-value">3,421</div>
-            <div class="stat-label">Total Customers</div>
-            <div class="stat-trend">↑ +15.2% vs last month</div>
+        <div class="analytics-statCard">
+            <div class="analytics-statIcon">👥</div>
+            <div class="analytics-statValue">3,421</div>
+            <div class="analytics-statLabel">Total Customers</div>
+            <div class="analytics-statTrend">↑ +15.2% vs last month</div>
         </div>
-        <div class="stat-card">
-            <div class="stat-icon">⭐</div>
-            <div class="stat-value">4.8</div>
-            <div class="stat-label">Average Rating</div>
-            <div class="stat-trend">↑ +0.3 vs last month</div>
+        <div class="analytics-statCard">
+            <div class="analytics-statIcon">⭐</div>
+            <div class="analytics-statValue">4.8</div>
+            <div class="analytics-statLabel">Average Rating</div>
+            <div class="analytics-statTrend">↑ +0.3 vs last month</div>
         </div>
     </div>
 
     <!-- Charts Row 1 -->
-    <div class="charts-container">
-        <!-- Monthly Sales Bar Chart -->
-        <div class="chart-card">
-            <div class="chart-title">
-                <span>📈</span> Monthly Sales Overview
-            </div>
-            <div class="bar-chart">
-                <div class="bar-item">
-                    <div class="bar-label">January</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 65%">$42,500</div>
-                    </div>
+    <div class="analytics-chartsContainer">
+        <div class="analytics-chartCard">
+            <div class="analytics-chartTitle"><span>📈</span> Monthly Sales Overview</div>
+            <div class="analytics-barChart">
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">January</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 65%">$42,500</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">February</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 72%">$48,200</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">February</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 72%">$48,200</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">March</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 85%">$56,800</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">March</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 85%">$56,800</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">April</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 78%">$52,400</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">April</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 78%">$52,400</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">May</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 92%">$61,300</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">May</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 92%">$61,300</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">June</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 100%">$67,800</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">June</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 100%">$67,800</div></div>
                 </div>
             </div>
         </div>
 
-        <!-- Payment Methods Donut Chart -->
-        <div class="chart-card">
-            <div class="chart-title">
-                <span>💳</span> Payment Methods Distribution
-            </div>
-            <div class="donut-container">
+        <div class="analytics-chartCard">
+            <div class="analytics-chartTitle"><span>💳</span> Payment Methods Distribution</div>
+            <div class="analytics-donutContainer">
                 <div>
-                    <div class="donut"></div>
-                    <div class="donut-label">Total: 1,847 orders</div>
+                    <div class="analytics-donut"></div>
+                    <div class="analytics-donutLabel">Total: 1,847 orders</div>
                 </div>
-                <div class="legend">
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #3b82f6"></div>
-                        <span>Credit Card (35%)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #10b981"></div>
-                        <span>PayPal (20%)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #f59e0b"></div>
-                        <span>Cash (20%)</span>
-                    </div>
-                    <div class="legend-item">
-                        <div class="legend-color" style="background: #ef4444"></div>
-                        <span>Other (25%)</span>
-                    </div>
+                <div class="analytics-legend">
+                    <div class="analytics-legendItem"><div class="analytics-legendColor" style="background: #3b82f6"></div><span>Credit Card (35%)</span></div>
+                    <div class="analytics-legendItem"><div class="analytics-legendColor" style="background: #10b981"></div><span>PayPal (20%)</span></div>
+                    <div class="analytics-legendItem"><div class="analytics-legendColor" style="background: #f59e0b"></div><span>Cash (20%)</span></div>
+                    <div class="analytics-legendItem"><div class="analytics-legendColor" style="background: #ef4444"></div><span>Other (25%)</span></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Charts Row 2 -->
-    <div class="charts-container">
-        <!-- Order Status Distribution -->
-        <div class="chart-card">
-            <div class="chart-title">
-                <span>🔄</span> Order Status Overview
-            </div>
-            <div class="bar-chart">
-                <div class="bar-item">
-                    <div class="bar-label">Pending</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 15%; background: linear-gradient(90deg, #f59e0b, #fbbf24)">278</div>
-                    </div>
+    <div class="analytics-chartsContainer">
+        <div class="analytics-chartCard">
+            <div class="analytics-chartTitle"><span>🔄</span> Order Status Overview</div>
+            <div class="analytics-barChart">
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">Pending</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 15%; background: linear-gradient(90deg, #f59e0b, #fbbf24)">278</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">Processing</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 25%; background: linear-gradient(90deg, #3b82f6, #60a5fa)">462</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">Processing</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 25%; background: linear-gradient(90deg, #3b82f6, #60a5fa)">462</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">Shipped</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 30%; background: linear-gradient(90deg, #8b5cf6, #a78bfa)">554</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">Shipped</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 30%; background: linear-gradient(90deg, #8b5cf6, #a78bfa)">554</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">Delivered</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 28%; background: linear-gradient(90deg, #10b981, #34d399)">517</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">Delivered</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 28%; background: linear-gradient(90deg, #10b981, #34d399)">517</div></div>
                 </div>
-                <div class="bar-item">
-                    <div class="bar-label">Cancelled</div>
-                    <div class="bar-container">
-                        <div class="bar-fill" style="width: 2%; background: linear-gradient(90deg, #ef4444, #f87171)">36</div>
-                    </div>
+                <div class="analytics-barItem">
+                    <div class="analytics-barLabel">Cancelled</div>
+                    <div class="analytics-barContainer"><div class="analytics-barFill" style="width: 2%; background: linear-gradient(90deg, #ef4444, #f87171)">36</div></div>
                 </div>
             </div>
         </div>
 
-        <!-- Top Products -->
-        <div class="chart-card">
-            <div class="chart-title">
-                <span>🏆</span> Top Selling Products
-            </div>
-            <div class="top-products">
-                <div class="product-row">
-                    <span class="product-name">⚡ Quantum Sneakers</span>
-                    <span class="product-sales">342 units</span>
-                </div>
-                <div class="product-row">
-                    <span class="product-name">🎒 Nebula Backpack</span>
-                    <span class="product-sales">298 units</span>
-                </div>
-                <div class="product-row">
-                    <span class="product-name">👕 Cyber Hoodie</span>
-                    <span class="product-sales">267 units</span>
-                </div>
-                <div class="product-row">
-                    <span class="product-name">⌚ Fusion Watch</span>
-                    <span class="product-sales">189 units</span>
-                </div>
-                <div class="product-row">
-                    <span class="product-name">🎧 Echo Headphones</span>
-                    <span class="product-sales">156 units</span>
-                </div>
+        <div class="analytics-chartCard">
+            <div class="analytics-chartTitle"><span>🏆</span> Top Selling Products</div>
+            <div class="analytics-topProducts">
+                <div class="analytics-productRow"><span class="analytics-productName">⚡ Quantum Sneakers</span><span class="analytics-productSales">342 units</span></div>
+                <div class="analytics-productRow"><span class="analytics-productName">🎒 Nebula Backpack</span><span class="analytics-productSales">298 units</span></div>
+                <div class="analytics-productRow"><span class="analytics-productName">👕 Cyber Hoodie</span><span class="analytics-productSales">267 units</span></div>
+                <div class="analytics-productRow"><span class="analytics-productName">⌚ Fusion Watch</span><span class="analytics-productSales">189 units</span></div>
+                <div class="analytics-productRow"><span class="analytics-productName">🎧 Echo Headphones</span><span class="analytics-productSales">156 units</span></div>
             </div>
         </div>
     </div>
 
-    <!-- Mini Stats Grid -->
-    <div class="mini-grid">
-        <div class="mini-card">
-            <div class="value">$89.99</div>
-            <div class="label">Average Order Value</div>
+    <!-- Mini Stats -->
+    <div class="analytics-miniGrid">
+        <div class="analytics-miniCard">
+            <div class="analytics-miniValue">$89.99</div>
+            <div class="analytics-miniLabel">Average Order Value</div>
         </div>
-        <div class="mini-card">
-            <div class="value">2.4 days</div>
-            <div class="label">Avg Delivery Time</div>
+        <div class="analytics-miniCard">
+            <div class="analytics-miniValue">2.4 days</div>
+            <div class="analytics-miniLabel">Avg Delivery Time</div>
         </div>
-        <div class="mini-card">
-            <div class="value">94%</div>
-            <div class="label">Customer Satisfaction</div>
+        <div class="analytics-miniCard">
+            <div class="analytics-miniValue">94%</div>
+            <div class="analytics-miniLabel">Customer Satisfaction</div>
         </div>
-        <div class="mini-card">
-            <div class="value">1,284</div>
-            <div class="label">Active Customers</div>
+        <div class="analytics-miniCard">
+            <div class="analytics-miniValue">1,284</div>
+            <div class="analytics-miniLabel">Active Customers</div>
         </div>
     </div>
 
-    <!-- Progress Goals Section -->
-    <div class="progress-section">
-        <div class="progress-title">🎯 2025 Annual Goals Progress</div>
-        <div class="progress-item">
-            <div class="progress-header">
-                <span>Revenue Target ($2.5M)</span>
-                <span>$1.45M / $2.5M</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-fill" style="width: 58%">58%</div>
-            </div>
+    <!-- Progress Goals -->
+    <div class="analytics-progressSection">
+        <div class="analytics-progressTitle">🎯 2025 Annual Goals Progress</div>
+        <div class="analytics-progressItem">
+            <div class="analytics-progressHeader"><span>Revenue Target ($2.5M)</span><span>$1.45M / $2.5M</span></div>
+            <div class="analytics-progressBarBg"><div class="analytics-progressFill" style="width: 58%">58%</div></div>
         </div>
-        <div class="progress-item">
-            <div class="progress-header">
-                <span>Customer Acquisition (5,000)</span>
-                <span>3,421 / 5,000</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-fill" style="width: 68%">68%</div>
-            </div>
+        <div class="analytics-progressItem">
+            <div class="analytics-progressHeader"><span>Customer Acquisition (5,000)</span><span>3,421 / 5,000</span></div>
+            <div class="analytics-progressBarBg"><div class="analytics-progressFill" style="width: 68%">68%</div></div>
         </div>
-        <div class="progress-item">
-            <div class="progress-header">
-                <span>Order Fulfillment (10,000)</span>
-                <span>6,847 / 10,000</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-fill" style="width: 68%">68%</div>
-            </div>
+        <div class="analytics-progressItem">
+            <div class="analytics-progressHeader"><span>Order Fulfillment (10,000)</span><span>6,847 / 10,000</span></div>
+            <div class="analytics-progressBarBg"><div class="analytics-progressFill" style="width: 68%">68%</div></div>
         </div>
-        <div class="progress-item">
-            <div class="progress-header">
-                <span>Customer Retention (85%)</span>
-                <span>78% / 85%</span>
-            </div>
-            <div class="progress-bar-bg">
-                <div class="progress-fill" style="width: 92%">92%</div>
-            </div>
+        <div class="analytics-progressItem">
+            <div class="analytics-progressHeader"><span>Customer Retention (85%)</span><span>78% / 85%</span></div>
+            <div class="analytics-progressBarBg"><div class="analytics-progressFill" style="width: 92%">92%</div></div>
         </div>
     </div>
 </body>
