@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Fusion | Animated Navbar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', 'Poppins', system-ui, sans-serif;
+            background: #0a0a0f;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+        }
+
+        /* LEFT NAVBAR - 15% */
+        .navbar {
+            width: 15%;
+            background: linear-gradient(180deg, #0f0f1a 0%, #0a0a0f 100%);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(59, 130, 246, 0.2);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        /* Animated gradient border */
+        .navbar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, #3b82f6, #1e3a8a, #3b82f6, #1e3a8a);
+            background-size: 100% 300%;
+            animation: borderFlow 4s ease infinite;
+        }
+
+        /* Title section */
+        .nav-title {
+            padding: 40px 20px 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .nav-title h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-title p {
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-top: 8px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation buttons container */
+        .nav-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        /* Button styles with underline animation */
+        .nav-link {
+            display: block;
+            padding: 12px 16px;
+            text-decoration: none;
+            color: #9ca3af;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            text-align: left;
+        }
+
+        /* Underline animation */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #3b82f6);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+            transform: translateX(5px);
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+            padding-left: 20px;
+        }
+
+        /* Icon styling */
+        .nav-link span {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover span {
+            transform: scale(1.1);
+        }
+
+        /* Different colors for each button */
+        .nav-link[data-icon="1"]:hover span { color: #3b82f6; }
+        .nav-link[data-icon="2"]:hover span { color: #60a5fa; }
+        .nav-link[data-icon="3"]:hover span { color: #818cf8; }
+        .nav-link[data-icon="4"]:hover span { color: #a78bfa; }
+        .nav-link[data-icon="5"]:hover span { color: #c084fc; }
+
+        /* Active state styling */
+        .nav-link:active {
+            transform: translateX(3px);
+        }
+
+        /* RIGHT CONTENT - 85% with full iframe */
+        .content {
+            width: 85%;
+            position: relative;
+            background: #000000;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #ffffff;
+        }
+
+        /* Scrollbar styling for navbar */
+        .navbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .navbar::-webkit-scrollbar-track {
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .navbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #3b82f6, #1e3a8a);
+            border-radius: 10px;
+        }
+
+        .navbar::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+
+        /* Animations */
+        @keyframes borderFlow {
+            0% { background-position: 0% 0%; }
+            50% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        /* Slide in animation for navbar */
+        .navbar {
+            animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* Button entrance animations */
+        .nav-link {
+            animation: fadeInUp 0.5s ease backwards;
+        }
+
+        .nav-link:nth-child(1) { animation-delay: 0.1s; }
+        .nav-link:nth-child(2) { animation-delay: 0.15s; }
+        .nav-link:nth-child(3) { animation-delay: 0.2s; }
+        .nav-link:nth-child(4) { animation-delay: 0.25s; }
+        .nav-link:nth-child(5) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hover glow effect on navbar items */
+        .nav-link:hover {
+            text-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Responsive design */
+        @media (max-width: 1024px) {
+            .navbar {
+                width: 20%;
+            }
+            .content {
+                width: 80%;
+            }
+            .nav-title h1 {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .navbar {
+                width: 100%;
+                max-height: 200px;
+                flex-direction: row;
+                border-right: none;
+                border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            }
+            .navbar::after {
+                top: auto;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+                height: 2px;
+                background: linear-gradient(90deg, #3b82f6, #1e3a8a, #3b82f6);
+            }
+            .nav-title {
+                padding: 20px;
+                margin-bottom: 0;
+                border-bottom: none;
+                border-right: 1px solid rgba(59, 130, 246, 0.15);
+            }
+            .nav-buttons {
+                flex-direction: row;
+                flex-wrap: wrap;
+                padding: 20px;
+                gap: 10px;
+            }
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            .content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- LEFT NAVBAR - 15% -->
+        <div class="navbar">
+            <div class="nav-title">
+                <h1><b>ROOM</b>PLUS+</h1>
+                <p>Dashboard</p>
+            </div>
+            <div class="nav-buttons">
+                <a href="home.php" target="mainFrame" class="nav-link" data-icon="1">
+                    <span>⌘</span> DASHBOARD
+                </a>
+                <a href="analytics.php" target="mainFrame" class="nav-link" data-icon="2">
+                    <span>⎇</span> ANALITICS
+                </a>
+                <a href="orders.php" target="mainFrame" class="nav-link" data-icon="3">
+                    <span>◉</span> ORDERS
+                </a>
+                <a href="customers.php" target="mainFrame" class="nav-link" data-icon="4">
+                    <span>✦</span> COSTUMERS
+                </a>
+                <a href="products.php" target="mainFrame" class="nav-link" data-icon="5">
+                    <span>⚡</span> PRODUCTS
+                </a>
+            </div>
+        </div>
+
+        <!-- RIGHT CONTENT - 85% FULL IFRAME -->
+        <div class="content">
+            <iframe src="home.php" name="mainFrame" title="Dynamic Content">
+                Your browser doesn't support iframes.
+            </iframe>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>NEBULA STORE | futuristic product grid</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fafafc;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #121212;
+      line-height: 1.4;
+      padding: 3rem 2rem 5rem 2rem;
+    }
+
+    /* main container – elegant max width with subtle breathing */
+    .shop-container {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+
+    /* minimal hero / intro (no header/footer, just creative vibe) */
+    .collection-head {
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: floatIn 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .collection-head h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(125deg, #0a0a0a, #2d2d2d);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .collection-head p {
+      font-size: 1.1rem;
+      color: #5b5b6b;
+      max-width: 520px;
+      margin: 0 auto;
+      font-weight: 450;
+    }
+
+    /* product grid – modern, spacious, responsive */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 2.2rem;
+    }
+
+    /* product card – neumorphism-lite + glassmorphism inspiration */
+    .product-card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
+      backdrop-filter: blur(0px);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      transform: translateY(0);
+      animation: cardReveal 0.6s ease backwards;
+    }
+
+    /* staggered animation for each card */
+    .product-card:nth-child(1) { animation-delay: 0.05s; }
+    .product-card:nth-child(2) { animation-delay: 0.1s; }
+    .product-card:nth-child(3) { animation-delay: 0.15s; }
+    .product-card:nth-child(4) { animation-delay: 0.2s; }
+    .product-card:nth-child(5) { animation-delay: 0.25s; }
+    .product-card:nth-child(6) { animation-delay: 0.3s; }
+
+    @keyframes cardReveal {
+      0% {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 38px -14px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+    }
+
+    /* image container – maintains aspect ratio */
+    .card-img {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      background: #f0f0f3;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      display: block;
+    }
+
+    .product-card:hover .card-img img {
+      transform: scale(1.06);
+    }
+
+    /* content area */
+    .card-content {
+      padding: 1.5rem 1.5rem 1.8rem;
+      background: white;
+    }
+
+    .product-name {
+      font-size: 1.5rem;
+      font-weight: 650;
+      letter-spacing: -0.3px;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+      transition: color 0.2s;
+    }
+
+    .product-card:hover .product-name {
+      color: #1a1a2e;
+    }
+
+    .price {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #000;
+      margin: 0.6rem 0 0.8rem 0;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .price span {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #5e5e6e;
+      letter-spacing: normal;
+    }
+
+    /* decorative micro animation line */
+    .product-description {
+      font-size: 0.9rem;
+      color: #5a5a6a;
+      line-height: 1.45;
+      margin: 0.5rem 0 1rem 0;
+      border-left: 2px solid #e2e2ea;
+      padding-left: 0.75rem;
+      transition: border-color 0.2s;
+    }
+
+    .product-card:hover .product-description {
+      border-left-color: #121212;
+    }
+
+    /* futuristic shop badge (just style) */
+    .card-footer {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 0.6rem;
+    }
+
+    .shop-badge {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      background: #f1f1f4;
+      padding: 0.25rem 0.9rem;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+    }
+
+    .product-card:hover .shop-badge {
+      background: #121212;
+      color: white;
+    }
+
+    /* "click me" hint / micro interaction */
+    .product-card {
+      position: relative;
+    }
+
+    .product-card::after {
+      content: "↗";
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.2s;
+      color: #121212;
+      background: white;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .product-card:hover::after {
+      opacity: 1;
+      transform: translateX(4px) translateY(-4px);
+    }
+
+    /* subtle floating animation on load for the title */
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* responsive refinement */
+    @media (max-width: 760px) {
+      body {
+        padding: 2rem 1.2rem 4rem;
+      }
+      .product-grid {
+        gap: 1.5rem;
+      }
+      .card-img {
+        height: 220px;
+      }
+    }
+
+    /* additional hover animation for price (tiny spark) */
+    .price {
+      transition: transform 0.2s ease;
+    }
+    .product-card:hover .price {
+      transform: scale(1.01);
+    }
+
+    /* glass style for the whole container background (elegant white theme) */
+    body {
+      background: radial-gradient(circle at 10% 20%, #ffffff, #f8f8fe);
+    }
+  </style>
+</head>
+<body>
+<div class="shop-container">
+  <div class="collection-head">
+    <h1>✦ ECLIPSE COLLECTION</h1>
+    <p>Visionary objects · futuristic craftsmanship · infinite detail</p>
+  </div>
+
+  <div class="product-grid">
+    <!-- product 1 -->
+    <a href="#" class="product-card" target="_blank">
+      <div class="card-img">
+        <img src="https://picsum.photos/id/0/500/560" alt="Aether headphones" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="product-name">Aether Wave</div>
+        <div class="price">$289 <span>USD</span></div>
+        <div class="product-description">Immersive spatial audio · 120h battery · zero-lag adaptive</div>
+        <div class="card-footer">
+          <span class="shop-badge">explore →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- product 2 -->
+    <a href="#" class="product-card" target="_blank">
+      <div class="card-img">
+        <img src="https://picsum.photos/id/1/500/560" alt="Nebula laptop" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="product-name">Nebula Core X1</div>
+        <div class="price">$1,249 <span>USD</span></div>
+        <div class="product-description">Ultra-slim · AI engine · 32h endurance · infinite display</div>
+        <div class="card-footer">
+          <span class="shop-badge">explore →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- product 3 -->
+    <a href="#" class="product-card" target="_blank">
+      <div class="card-img">
+        <img src="https://picsum.photos/id/20/500/560" alt="Orion timepiece" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="product-name">Orion Chrono</div>
+        <div class="price">$459 <span>USD</span></div>
+        <div class="product-description">Solar hybrid · haptic bezel · minimalist future tool</div>
+        <div class="card-footer">
+          <span class="shop-badge">explore →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- product 4 -->
+    <a href="#" class="product-card" target="_blank">
+      <div class="card-img">
+        <img src="https://picsum.photos/id/26/500/560" alt="Lumina speaker" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="product-name">Lumina Sphere</div>
+        <div class="price">$189 <span>USD</span></div>
+        <div class="product-description">360° acoustic field · kinetic light sync · waterproof</div>
+        <div class="card-footer">
+          <span class="shop-badge">explore →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- product 5 -->
+    <a href="#" class="product-card" target="_blank">
+      <div class="card-img">
+        <img src="https://picsum.photos/id/29/500/560" alt="Zenith desk" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="product-name">Zenith Edge Desk</div>
+        <div class="price">$799 <span>USD</span></div>
+        <div class="product-description">Smart standing desk · wireless charge · bamboo-aluminum core</div>
+        <div class="card-footer">
+          <span class="shop-badge">explore →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- product 6 -->
+    <a href="#" class="product-card" target="_blank">
+      <div class="card-img">
+        <img src="https://picsum.photos/id/42/500/560" alt="Void mirror" loading="lazy">
+      </div>
+      <div class="card-content">
+        <div class="product-name">Void Mirror</div>
+        <div class="price">$359 <span>USD</span></div>
+        <div class="product-description">Smart reflection · ambient UI · frameless infinity glass</div>
+        <div class="card-footer">
+          <span class="shop-badge">explore →</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- no footer, no header – pure grid. product click leads to other page (href="#") – replace with actual links -->
+</body>
+</html>
