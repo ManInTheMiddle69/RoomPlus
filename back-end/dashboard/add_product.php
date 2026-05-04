@@ -9,24 +9,24 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Inter', 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
     }
 
-    /* VERY LIGHT BLUE BACKGROUND — extremely light, airy */
-    body {
+    /* VERY LIGHT BLUE BACKGROUND */
+    .addProduct-body {
       background: #eef5fe;
       min-height: 100vh;
       padding: 2rem 2rem 3rem 2rem;
     }
 
     /* MAIN DASHBOARD CONTAINER */
-    .add-product-dashboard {
+    .addProduct-dashboard {
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    /* PAGE TITLE (cool, futuristic) */
-    .page-title {
+    /* PAGE TITLE */
+    .addProduct-pageTitle {
       margin-bottom: 2rem;
       font-size: 2.2rem;
       font-weight: 700;
@@ -41,14 +41,14 @@
     }
 
     /* THREE SECTIONS DIRECT LAYOUT */
-    .three-zone-layout {
+    .addProduct-threeZoneLayout {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
     }
 
-    /* ========= SECTION 1: LEFT SIDE - ICON + PHOTO ZONE (NO TITLE, NO LEGEND, FULL WIDTH PHOTOS WITH MARGIN BETWEEN) ========= */
-    .photo-zone {
+    /* SECTION 1: LEFT SIDE - PHOTO ZONE */
+    .addProduct-photoZone {
       flex: 1.1;
       min-width: 280px;
       background: rgba(255, 255, 255, 0.5);
@@ -59,8 +59,7 @@
       box-shadow: 0 12px 28px -8px rgba(0, 50, 80, 0.08);
     }
 
-    /* ADD PHOTO ICON area */
-    .add-photo-block {
+    .addProduct-photoBlock {
       background: rgba(230, 245, 255, 0.9);
       border-radius: 1.8rem;
       padding: 1.2rem;
@@ -71,50 +70,39 @@
       transition: all 0.2s;
     }
 
-    .add-photo-block:hover {
+    .addProduct-photoBlock:hover {
       background: rgba(220, 240, 255, 0.95);
       border-color: #4a9fd8;
     }
 
-    .camera-icon {
+    .addProduct-cameraIcon {
       font-size: 3.2rem;
       display: inline-block;
-      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.03));
     }
 
-    .add-photo-text {
+    .addProduct-photoText {
       font-weight: 700;
       color: #136b97;
       margin-top: 0.3rem;
       font-size: 0.9rem;
-      letter-spacing: 0.3px;
     }
 
-    /* Under the icon: already added photos - full width grid with margin between photos */
-    .added-photos-container {
-      margin-top: 0.5rem;
-    }
-
-    /* gallery grid - photos take full available width, with gaps */
-    .photo-gallery-grid {
+    .addProduct-galleryGrid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
       gap: 1rem;
       width: 100%;
     }
 
-    .photo-card {
+    .addProduct-photoCard {
       background: rgba(255,255,250,0.7);
       border-radius: 1.2rem;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-      text-align: center;
       border: 1px solid rgba(255,255,245,0.9);
       width: 100%;
     }
 
-    /* images take full width of card */
-    .photo-card img {
+    .addProduct-photoCard img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
@@ -122,28 +110,12 @@
       background: #cfe2f5;
     }
 
-    /* NO LEGEND, NO TITLE — we completely remove any text label under photos */
-    .photo-label {
-      display: none;
-    }
-
-    /* second row same style, no extra titles */
-    .second-row {
+    .addProduct-galleryGridSecondRow {
       margin-top: 1rem;
     }
 
-    /* No animations on photo section at all (as requested) */
-    .photo-card, .photo-card img, .photo-gallery-grid {
-      animation: none;
-      transition: none;
-    }
-    .photo-card:hover {
-      transform: none;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-    }
-
-    /* ========= RIGHT SIDE (DIVIDED INTO TWO SECTIONS) ========= */
-    .right-stack {
+    /* RIGHT SIDE STACK */
+    .addProduct-rightStack {
       flex: 2.2;
       min-width: 320px;
       display: flex;
@@ -151,8 +123,8 @@
       gap: 1.8rem;
     }
 
-    /* UPPER SIDE: product form (name, price, color, size, quantity) */
-    .product-form-section {
+    /* UPPER SIDE: product form */
+    .addProduct-formSection {
       background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(8px);
       border-radius: 2rem;
@@ -161,7 +133,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
     }
 
-    .form-header {
+    .addProduct-formHeader {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
@@ -170,57 +142,49 @@
       padding-bottom: 0.5rem;
     }
 
-    .form-header h3 {
+    .addProduct-formHeader h3 {
       font-weight: 700;
       background: linear-gradient(125deg, #11658e, #3083b5);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      font-size: 1.3rem;
     }
 
-    .form-grid {
+    .addProduct-formGrid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 1.3rem;
     }
 
-    .input-field {
+    .addProduct-inputField {
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
     }
 
-    .input-field label {
+    .addProduct-inputField label {
       font-weight: 600;
       font-size: 0.8rem;
       color: #115e86;
-      letter-spacing: 0.3px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .input-field input, .input-field select {
+    .addProduct-inputField input, .addProduct-inputField select {
       background: #ffffffdb;
       border: 1px solid #cce2f5;
       border-radius: 1.5rem;
       padding: 0.8rem 1rem;
       font-size: 0.9rem;
-      font-weight: 500;
       color: #0c405b;
-      transition: all 0.2s;
       outline: none;
     }
 
-    .input-field input:focus, .input-field select:focus {
+    .addProduct-inputField input:focus {
       border-color: #3083b5;
-      box-shadow: 0 0 0 3px rgba(48, 131, 181, 0.15);
       background: white;
     }
 
-    /* LOWER SIDE: more details area */
-    .more-details-section {
+    /* LOWER SIDE: details area */
+    .addProduct-detailsSection {
       background: rgba(255, 255, 255, 0.65);
       backdrop-filter: blur(8px);
       border-radius: 2rem;
@@ -229,7 +193,7 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
     }
 
-    .details-title {
+    .addProduct-detailsTitle {
       font-size: 1.2rem;
       font-weight: 700;
       background: linear-gradient(120deg, #136b9c, #3f92c7);
@@ -237,44 +201,29 @@
       background-clip: text;
       color: transparent;
       margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
-    .details-title::before {
-      content: "✧";
-      font-size: 1.3rem;
-      color: #4a9fd8;
-    }
-
-    textarea {
+    .addProduct-textarea {
       width: 100%;
       background: #fefefed9;
       border: 1px solid #cce2f5;
       border-radius: 1.5rem;
       padding: 1rem 1.2rem;
       font-family: inherit;
-      font-size: 0.9rem;
       resize: vertical;
       outline: none;
-      transition: 0.2s;
       color: #124263;
     }
 
-    textarea:focus {
-      border-color: #4a9fd8;
-      box-shadow: 0 0 0 3px rgba(74, 159, 216, 0.2);
-      background: white;
-    }
-
-    .action-footer {
+    .addProduct-actionFooter {
       margin-top: 1.2rem;
       display: flex;
       justify-content: flex-end;
+      align-items: center;
+      gap: 1.5rem;
     }
 
-    .futuristic-btn {
+    .addProduct-submitBtn {
       background: linear-gradient(95deg, #1976b0, #389fd9);
       border: none;
       padding: 0.8rem 1.8rem;
@@ -282,173 +231,113 @@
       font-weight: 600;
       font-size: 0.9rem;
       color: white;
-      letter-spacing: 0.5px;
       cursor: pointer;
       box-shadow: 0 5px 12px rgba(0, 70, 110, 0.2);
-      transition: all 0.2s ease;
-      border: 1px solid rgba(255,255,255,0.4);
     }
 
-    .futuristic-btn:hover {
+    .addProduct-submitBtn:hover {
       transform: translateY(-2px);
       background: linear-gradient(95deg, #1e84c4, #4ca9e3);
-      box-shadow: 0 10px 18px rgba(20, 80, 120, 0.25);
     }
 
-    /* Responsive */
+    .addProduct-goBack {
+      font-size: 0.85rem;
+      color: #136b97;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
     @media (max-width: 880px) {
-      body {
-        padding: 1.2rem;
-      }
-      .photo-zone {
-        flex: auto;
-      }
-      .photo-gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-        gap: 0.8rem;
-      }
-    }
-
-    /* ensure no extra spacing or titles appear */
-    .added-photos-section {
-      width: 100%;
-    }
-    /* remove any hidden legend */
-    .added-photos-label, .photo-legend {
-      display: none;
+      .addProduct-photoZone { flex: auto; }
+      .addProduct-galleryGrid { grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); }
     }
   </style>
 </head>
-<body>
-<div class="add-product-dashboard">
-  <!-- PAGE TITLE -->
-  <div class="page-title">✦ ADD NEW PRODUCT ✦</div>
+<body class="addProduct-body">
 
-  <!-- THREE DIRECT SECTIONS: left photo zone | right side splitted into upper form + lower details -->
-  <div class="three-zone-layout">
+<div class="addProduct-dashboard">
+  <div class="addProduct-pageTitle">✦ ADD NEW PRODUCT ✦</div>
+
+  <div class="addProduct-threeZoneLayout">
     
-    <!-- LEFT SECTION: Icon to add photo + already added photos (full width, margin between, no title/legend) -->
-    <div class="photo-zone">
-      <!-- Icon + add photo area (no js, just UI) -->
-      <div class="add-photo-block">
-        <div class="camera-icon">📷 + 🖼️</div>
-        <div class="add-photo-text">CLICK TO ADD PHOTO</div>
-        <div style="font-size:0.7rem; color:#2b7da3; margin-top: 5px;">drag & drop ready • futuristic</div>
+    <!-- LEFT PHOTO ZONE -->
+    <div class="addProduct-photoZone">
+      <div class="addProduct-photoBlock">
+        <div class="addProduct-cameraIcon">📷 + 🖼️</div>
+        <div class="addProduct-photoText">CLICK TO ADD PHOTO</div>
       </div>
       
-      <!-- UNDER THE ICON: random already added photos - full width with margin between, no title/legend -->
-      <div class="added-photos-container">
-        <!-- first row of random photos from internet (picsum) - no labels -->
-        <div class="photo-gallery-grid">
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/20/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/26/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/30/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/36/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/42/200/200" alt="product sample" loading="lazy">
-          </div>
+      <div class="addProduct-galleryContainer">
+        <div class="addProduct-galleryGrid">
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/20/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/26/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/30/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/36/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/42/200/200" alt="sample"></div>
         </div>
-        <!-- second row of random added photos from internet (more variety, full width, margin between) -->
-        <div class="photo-gallery-grid second-row">
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/59/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/66/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/88/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/100/200/200" alt="product sample" loading="lazy">
-          </div>
-          <div class="photo-card">
-            <img src="https://picsum.photos/id/120/200/200" alt="product sample" loading="lazy">
-          </div>
+        <div class="addProduct-galleryGrid addProduct-galleryGridSecondRow">
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/59/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/66/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/88/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/100/200/200" alt="sample"></div>
+          <div class="addProduct-photoCard"><img src="https://picsum.photos/id/120/200/200" alt="sample"></div>
         </div>
-        <!-- No text, no legend, no titles — exactly as required -->
       </div>
     </div>
 
-    <!-- RIGHT SIDE: split into two vertical sections (upper form & lower details) -->
-    <div class="right-stack">
-      
-      <!-- UPPER SIDE: product form (name, price, color, size, quantity) -->
-      <div class="product-form-section">
-        <div class="form-header">
+    <!-- RIGHT STACK -->
+    <div class="addProduct-rightStack">
+      <div class="addProduct-formSection">
+        <div class="addProduct-formHeader">
           <h3>⚡ PRODUCT SPECS</h3>
           <span style="font-size:0.7rem; background:#cae1f5; padding:0.2rem 0.8rem; border-radius:30px;">inventory</span>
         </div>
-        <form onsubmit="return false;"> <!-- pure UI, no JS -->
-          <div class="form-grid">
-            <div class="input-field">
+        <form onsubmit="return false;">
+          <div class="addProduct-formGrid">
+            <div class="addProduct-inputField">
               <label>🏷️ PRODUCT NAME</label>
-              <input type="text" placeholder="e.g. Quantum Runner X1" value="Nebula Drift 3.0">
+              <input type="text" value="Nebula Drift 3.0">
             </div>
-            <div class="input-field">
+            <div class="addProduct-inputField">
               <label>💰 PRICE ($)</label>
-              <input type="number" step="0.01" placeholder="0.00" value="149.99">
+              <input type="number" step="0.01" value="149.99">
             </div>
-            <div class="input-field">
+            <div class="addProduct-inputField">
               <label>🎨 COLOR</label>
               <select>
                 <option value="Lunar Frost" selected>Lunar Frost</option>
                 <option value="Midnight Black">Midnight Black</option>
-                <option value="Aurora Green">Aurora Green</option>
-                <option value="Solar Flare">Solar Flare Red</option>
-                <option value="Deep Ocean">Deep Ocean Blue</option>
-                <option value="Neon Purple">Neon Purple</option>
                 <option value="Arctic White">Arctic White</option>
-                <option value="Carbon Gray">Carbon Gray</option>
-                <option value="Sand Dune">Sand Dune</option>
-                <option value="Cosmic Pink">Cosmic Pink</option>
               </select>
             </div>
-            <div class="input-field">
+            <div class="addProduct-inputField">
               <label>📏 SIZE</label>
               <select>
-                <option>XS</option>
-                <option selected>S</option>
-                <option>M</option>
+                <option>S</option>
+                <option selected>M</option>
                 <option>L</option>
-                <option>XL</option>
-                <option>XXL</option>
               </select>
             </div>
-            <div class="input-field">
-              <label>📦 QUANTITY AVAILABLE</label>
-              <input type="number" value="78" min="0">
+            <div class="addProduct-inputField">
+              <label>📦 QUANTITY</label>
+              <input type="number" value="78">
             </div>
           </div>
         </form>
       </div>
 
-      <!-- LOWER SIDE: more details of the product (full description + additional) -->
-      <div class="more-details-section">
-        <div class="details-title">
-          ✨ MORE DETAILS
-        </div>
-        <textarea rows="5" placeholder="Write a comprehensive product description, materials, special features, care instructions, warranty etc...">🚀 NEBULA DRIFT 3.0 – FUTURISTIC ESSENTIALS
+      <div class="addProduct-detailsSection">
+        <div class="addProduct-detailsTitle">✨ MORE DETAILS</div>
+        <textarea class="addProduct-textarea" rows="5">🚀 NEBULA DRIFT 3.0 – FUTURISTIC ESSENTIALS
 
 • Aerodynamic mesh upper with reactive cooling
-• Lightweight carbon-fiber midsole for maximum energy return
-• Holographic reflective details for night visibility
-• Eco-conscious manufacturing (30% recycled materials)
-• 2-year cosmic warranty + AR fitting support
-• Available in limited edition colorways</textarea>
-        <div class="action-footer">
-          <button class="futuristic-btn" type="button">+ ADD PRODUCT ✦</button>
-          <a href="products.php">go back</a>
+• Lightweight carbon-fiber midsole
+• Holographic reflective details
+• 2-year cosmic warranty</textarea>
+        <div class="addProduct-actionFooter">
+          <a href="products.php" class="addProduct-goBack">← Go Back</a>
+          <button class="addProduct-submitBtn" type="button">+ ADD PRODUCT ✦</button>
         </div>
-        <p style="font-size:0.65rem; margin-top: 0.8rem; text-align: right; color: #2a6e97;">✨ dashboard ready · zero javascript</p>
       </div>
     </div>
   </div>
