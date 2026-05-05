@@ -8,51 +8,243 @@
 </head>
 
 <body>
+  <style>
+    /* ----- FOOTER THEME VARIABLES ----- */
+    :root {
+      --footer-text-main: #3a3a3a;
+      --footer-text-sec: #4a4a4a;
+      --footer-icon-bg: rgba(80, 80, 80, 0.1);
+      --footer-icon-border: rgba(80, 80, 80, 0.2);
+      --footer-input-bg: rgba(255, 255, 255, 0.7);
+      --footer-border: rgba(80, 80, 80, 0.2);
+      --footer-btn-grad: linear-gradient(95deg, #3a3a3a, #5a5a5a);
+    }
+
+    [data-theme="dark"] {
+      --footer-text-main: #ffffff;
+      --footer-text-sec: #aaaaaa;
+      --footer-icon-bg: rgba(255, 255, 255, 0.05);
+      --footer-icon-border: rgba(255, 255, 255, 0.1);
+      --footer-input-bg: rgba(30, 30, 30, 0.7);
+      --footer-border: rgba(255, 255, 255, 0.1);
+      --footer-btn-grad: linear-gradient(95deg, #555555, #888888);
+    }
+
+    .futuristic-footer {
+      width: 100%;
+      background: transparent;
+      margin-top: 2rem;
+      padding: 2.5rem 2rem 1.2rem;
+      backdrop-filter: blur(0px);
+      transition: all 0.4s ease;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-section, .contact-section, .newsletter-section {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .social-section h4, .contact-section h4, .newsletter-section h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: var(--footer-text-main);
+      transition: color 0.4s ease;
+      letter-spacing: 0.5px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .social-section h4:after, .contact-section h4:after, .newsletter-section h4:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 30px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--footer-text-main), transparent);
+      border-radius: 2px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background: var(--footer-icon-bg);
+      border-radius: 50%;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.6, 1.1);
+      text-decoration: none;
+      color: var(--footer-text-sec);
+      font-size: 1.4rem;
+      border: 1px solid var(--footer-icon-border);
+    }
+
+    .contact-details p {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.8rem;
+      color: var(--footer-text-sec);
+      font-size: 0.9rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .newsletter-input {
+      background: var(--footer-input-bg);
+      border: 1px solid var(--footer-border);
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--footer-text-main);
+      outline: none;
+      width: 100%;
+    }
+
+    .newsletter-btn {
+      background: var(--footer-btn-grad);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50px;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 1.8rem;
+      border-top: 1px solid var(--footer-border);
+      font-size: 0.75rem;
+      color: var(--footer-text-sec);
+      opacity: 0.7;
+    }
+
+    /* ---------- SMARTPHONE REFINEMENT ---------- */
+    @media (max-width: 768px) {
+      .futuristic-footer {
+        padding: 3rem 1.5rem 2rem;
+      }
+
+      .footer-grid {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 3.5rem;
+      }
+
+      .social-section, .contact-section, .newsletter-section {
+        min-width: 100%;
+      }
+
+      .social-icons {
+        justify-content: center;
+      }
+
+      .social-section h4:after, .contact-section h4:after, .newsletter-section h4:after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .contact-details p {
+        justify-content: center;
+      }
+
+      .newsletter-form {
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .footer-bottom {
+        margin-top: 2rem;
+        line-height: 1.5;
+      }
+    }
+  </style>
 
   <footer class="futuristic-footer">
     <div class="footer-grid">
-      <!-- LEFT SIDE: SOCIAL MEDIA LOGOS (icon style using modern unicode/symbols, fully html/css) -->
       <div class="social-section">
         <h4>✦ SOCIALMEDIAS</h4>
         <div class="social-icons">
-          <a href="#" class="social-icon" aria-label="Twitter" onclick="alert('🌐 Twitter / X — follow for cosmic updates')"><span>🐦</span></a>
-          <a href="#" class="social-icon" aria-label="Instagram" onclick="alert('📸 Instagram — visual feed of the future')"><span>📷</span></a>
-          <a href="#" class="social-icon" aria-label="LinkedIn" onclick="alert('🔗 LinkedIn — professional cosmos')"><span>🔗</span></a>
-          <a href="#" class="social-icon" aria-label="GitHub" onclick="alert('💻 GitHub — open source innovation')"><span>⌨️</span></a>
-          <a href="#" class="social-icon" aria-label="YouTube" onclick="alert('🎥 YouTube — cinematic tech reviews')"><span>📺</span></a>
+          <a href="#" class="social-icon"><span>🐦</span></a>
+          <a href="#" class="social-icon"><span>📷</span></a>
+          <a href="#" class="social-icon"><span>🔗</span></a>
+          <a href="#" class="social-icon"><span>⌨️</span></a>
+          <a href="#" class="social-icon"><span>📺</span></a>
         </div>
-        <p style="font-size: 0.75rem; margin-top: 1rem; color:#3f658b;">@ 2026 — follow the wave</p>
+        <p style="font-size: 0.75rem; margin-top: 1.2rem; color:#3f658b; opacity: 0.8;">@ 2026 — follow the wave</p>
       </div>
 
-      <!-- MIDDLE SECTION: CONTACT (address, tel, email) -->
       <div class="contact-section">
         <h4>CONTACT INFO</h4>
         <div class="contact-details">
-          <br>
-          <p><span class="contact-icon">📍</span> 221B Futurist Avenue, Silicon Valley, CA</p>
-          <p><span class="contact-icon">📞</span> +1 (800) 456-7890</p>
-          <p><span class="contact-icon">✉️</span> hello@aetherlux.com</p>
-
+          <p>📍 221B Futurist Avenue, Silicon Valley</p>
+          <p>📞 +1 (800) 456-7890</p>
+          <p>✉️ hello@aetherlux.com</p>
         </div>
       </div>
 
-      <!-- RIGHT SIDE: NEWSLETTER SECTION -->
       <div class="newsletter-section">
         <h4>NEWSLETTER</h4>
         <div class="newsletter-form">
-          <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="your.email@domain.com" required>
+          <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="email@domain.com">
           <button class="newsletter-btn" id="subscribeBtn">SUBSCRIBE</button>
-          <div class="sub-message" id="formFeedback"></div>
+          <div id="formFeedback" style="font-size: 0.8rem; margin-top: 10px; min-height: 1rem;"></div>
         </div>
-        <p style="font-size: 0.7rem; margin-top: 0.8rem; opacity: 0.8;">Stay ahead with exclusive insights & futuristic drops.</p>
       </div>
     </div>
 
-    <!-- BOTTOM ALL-RIGHTS RESERVED -->
     <div class="footer-bottom">
-      © 2026 AETHERLUX — All rights reserved. | Designed with futuristic transparency
+      © 2026 AETHERLUX — All rights reserved. <br> Designed with futuristic transparency
     </div>
   </footer>
-  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const subscribeBtn = document.getElementById('subscribeBtn');
+      const emailInput = document.getElementById('newsletterEmail');
+      const feedback = document.getElementById('formFeedback');
+      
+      subscribeBtn.addEventListener('click', () => {
+        const emailValue = emailInput.value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === "") {
+          feedback.textContent = "✖ Please enter an email address.";
+          feedback.style.color = "#ff4d4d";
+        } else if (!emailPattern.test(emailValue)) {
+          feedback.textContent = "✖ That doesn't look like a valid email.";
+          feedback.style.color = "#ff4d4d";
+        } else {
+          feedback.textContent = "✔ Welcome to the future! Check your inbox.";
+          feedback.style.color = "#00ffcc";
+          emailInput.value = ""; // Clear input on success
+        }
+      });
+    });
+  </script>  
 </body>
 </html>
