@@ -3,311 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../back-end-style.css">
     <title>Nexus Orders | Futuristic Orders Table</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .order-body {
-            font-family: 'Segoe UI', 'Inter', 'Poppins', system-ui, sans-serif;
-            background: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            padding: 30px;
-        }
-
-        /* Search, Filter and Date Select */
-        .order-controls {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            animation: order-fadeInUp 0.5s ease-out 0.1s backwards;
-        }
-
-        .order-searchWrapper {
-            flex: 2;
-            position: relative;
-            animation: order-slideInLeft 0.5s ease-out 0.15s backwards;
-        }
-
-        .order-searchIcon {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-            color: #3b82f6;
-            pointer-events: none;
-        }
-
-        .order-searchBar {
-            width: 100%;
-            padding: 14px 20px 14px 50px;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-            font-family: inherit;
-        }
-
-        .order-searchBar:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
-            transform: scale(1.01);
-        }
-
-        .order-filterWrapper {
-            flex: 1;
-            animation: order-slideInLeft 0.5s ease-out 0.2s backwards;
-        }
-
-        .order-filterBtn {
-            width: 100%;
-            padding: 14px 20px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 600;
-            color: #1e293b;
-            transition: all 0.3s ease;
-        }
-
-        .order-filterBtn:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
-        }
-
-        .order-dateWrapper {
-            flex: 1;
-            animation: order-slideInLeft 0.5s ease-out 0.25s backwards;
-        }
-
-        .order-dateSelect {
-            width: 100%;
-            padding: 14px 20px;
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-weight: 600;
-            color: #1e293b;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-
-        .order-dateSelect:hover {
-            border-color: #3b82f6;
-            background: #f0f9ff;
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
-        }
-
-        /* Table Styles - Full width */
-        .order-tableContainer {
-            overflow-x: auto;
-            width: 100%;
-            animation: order-fadeInUp 0.5s ease-out 0.3s backwards;
-        }
-
-        .order-mainTable {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.9rem;
-            background: white;
-        }
-
-        /* Table Header */
-        .order-mainTable thead {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            color: white;
-        }
-
-        .order-mainTable th {
-            padding: 18px 15px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .order-mainTable th::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #60a5fa);
-            transition: width 0.3s ease;
-        }
-
-        .order-mainTable th:hover::after {
-            width: 100%;
-        }
-
-        /* Zebra striping */
-        .order-mainTable tbody tr {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: order-fadeInRow 0.3s ease backwards;
-        }
-
-        .order-mainTable tbody tr:nth-child(odd) {
-            background-color: #ffffff;
-        }
-
-        .order-mainTable tbody tr:nth-child(even) {
-            background-color: #f1f5f9;
-        }
-
-        /* Hover effect */
-        .order-mainTable tbody tr:hover {
-            background: linear-gradient(90deg, #dbeafe, #eff6ff);
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
-
-        .order-mainTable td {
-            padding: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            color: #1e293b;
-        }
-
-        /* Checkbox styling */
-        .order-checkbox {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: #3b82f6;
-            transition: transform 0.2s ease;
-        }
-
-        .order-checkbox:hover {
-            transform: scale(1.1);
-        }
-
-        .order-phone {
-            font-family: monospace;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .order-address {
-            max-width: 200px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .order-paymentMethod {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }
-
-        .order-paymentCredit { background: #dbeafe; color: #1e40af; }
-        .order-paymentPaypal { background: #e0f2fe; color: #0369a1; }
-        .order-paymentCash { background: #dcfce7; color: #166534; }
-
-        /* Status dropdown */
-        .order-statusSelect {
-            padding: 6px 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            background: white;
-            transition: all 0.2s ease;
-            font-family: inherit;
-        }
-
-        .order-statusSelect.pending { color: #f59e0b; border-color: #fde68a; background: #fffbeb; }
-        .order-statusSelect.processing { color: #3b82f6; border-color: #bfdbfe; background: #eff6ff; }
-        .order-statusSelect.shipped { color: #8b5cf6; border-color: #ddd6fe; background: #f5f3ff; }
-        .order-statusSelect.delivered { color: #10b981; border-color: #a7f3d0; background: #ecfdf5; }
-        .order-statusSelect.cancelled { color: #ef4444; border-color: #fecaca; background: #fef2f2; }
-
-        /* Action buttons */
-        .order-deleteBtn {
-            padding: 6px 14px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: all 0.2s ease;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-            color: white;
-        }
-
-        .order-deleteBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        /* Animations */
-        @keyframes order-fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes order-slideInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes order-fadeInRow {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        /* Stagger animation for rows */
-        .order-mainTable tbody tr:nth-child(1) { animation-delay: 0.05s; }
-        .order-mainTable tbody tr:nth-child(2) { animation-delay: 0.1s; }
-        .order-mainTable tbody tr:nth-child(3) { animation-delay: 0.15s; }
-        .order-mainTable tbody tr:nth-child(4) { animation-delay: 0.2s; }
-        .order-mainTable tbody tr:nth-child(5) { animation-delay: 0.25s; }
-        .order-mainTable tbody tr:nth-child(6) { animation-delay: 0.3s; }
-        .order-mainTable tbody tr:nth-child(7) { animation-delay: 0.35s; }
-        .order-mainTable tbody tr:nth-child(8) { animation-delay: 0.4s; }
-        .order-mainTable tbody tr:nth-child(9) { animation-delay: 0.45s; }
-        .order-mainTable tbody tr:nth-child(10) { animation-delay: 0.5s; }
-
-        @media (max-width: 1024px) {
-            .order-mainTable th, .order-mainTable td { padding: 12px 10px; font-size: 0.8rem; }
-        }
-
-        /* Custom scrollbar */
-        .order-tableContainer::-webkit-scrollbar { height: 8px; }
-        .order-tableContainer::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
-        .order-tableContainer::-webkit-scrollbar-thumb { background: linear-gradient(90deg, #3b82f6, #2563eb); border-radius: 10px; }
-    </style>
 </head>
 <body class="order-body">
+    <?php
+    // Include database connection
+    include '../../connect.php';
+
+    // Fetch orders with user details using JOIN
+    $sql = "SELECT o.order_id, o.user_id, o.order_date, o.payment_method, o.order_status,
+                   u.full_name, u.phone, u.address_line1, u.city, u.country
+            FROM orders o
+            LEFT JOIN users u ON o.user_id = u.user_id
+            ORDER BY o.order_date DESC";
+
+    $result = mysqli_query($conn, $sql);
+    
+    // Check if query was successful
+    if (!$result) {
+        die("Query failed: " . mysqli_error($conn));
+    }
+    ?>
+
     <!-- Controls -->
     <div class="order-controls">
         <div class="order-searchWrapper">
@@ -345,88 +63,122 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Row 1 -->
-                <tr>
-                    <td><input type="checkbox" class="order-checkbox"></td>
-                    <td>#ORD001</td>
-                    <td>Alex Morgan</td>
-                    <td>2024-01-15</td>
-                    <td class="order-phone">+1 (555) 123-4567</td>
-                    <td class="order-address">123 Main St, New York, NY 10001</td>
-                    <td><span class="order-paymentMethod order-paymentCredit">💳 Credit Card</span></td>
-                    <td>
-                        <select class="order-statusSelect pending">
-                            <option value="pending" selected>⏳ Pending</option>
-                            <option value="delivered">✅ Delivered</option>
-                        </select>
-                    </td>
-                    <td><button class="order-deleteBtn">Delete</button></td>
-                </tr>
-                <!-- Row 2 -->
-                <tr>
-                    <td><input type="checkbox" class="order-checkbox"></td>
-                    <td>#ORD002</td>
-                    <td>Sarah Johnson</td>
-                    <td>2024-01-16</td>
-                    <td class="order-phone">+1 (555) 234-5678</td>
-                    <td class="order-address">456 Oak Ave, Los Angeles, CA 90001</td>
-                    <td><span class="order-paymentMethod order-paymentPaypal">💰 PayPal</span></td>
-                    <td>
-                        <select class="order-statusSelect processing">
-                            <option value="processing" selected>🔄 Processing</option>
-                            <option value="cancelled">❌ Cancelled</option>
-                        </select>
-                    </td>
-                    <td><button class="order-deleteBtn">Delete</button></td>
-                </tr>
-                <!-- Row 3 -->
-                <tr>
-                    <td><input type="checkbox" class="order-checkbox"></td>
-                    <td>#ORD003</td>
-                    <td>Michael Chen</td>
-                    <td>2024-01-18</td>
-                    <td class="order-phone">+1 (555) 345-6789</td>
-                    <td class="order-address">789 Pine Rd, Chicago, IL 60601</td>
-                    <td><span class="order-paymentMethod order-paymentCredit">💳 Credit Card</span></td>
-                    <td>
-                        <select class="order-statusSelect shipped">
-                            <option value="shipped" selected>📦 Shipped</option>
-                        </select>
-                    </td>
-                    <td><button class="order-deleteBtn">Delete</button></td>
-                </tr>
-                <!-- Row 4 -->
-                <tr>
-                    <td><input type="checkbox" class="order-checkbox"></td>
-                    <td>#ORD004</td>
-                    <td>Emily Rodriguez</td>
-                    <td>2024-01-20</td>
-                    <td class="order-phone">+1 (555) 456-7890</td>
-                    <td class="order-address">321 Elm Blvd, Miami, FL 33101</td>
-                    <td><span class="order-paymentMethod order-paymentCash">💵 Cash on Delivery</span></td>
-                    <td>
-                        <select class="order-statusSelect delivered">
-                            <option value="delivered" selected>✅ Delivered</option>
-                        </select>
-                    </td>
-                    <td><button class="order-deleteBtn">Delete</button></td>
-                </tr>
-                <!-- Row 5 -->
-                <tr>
-                    <td><input type="checkbox" class="order-checkbox"></td>
-                    <td>#ORD005</td>
-                    <td>David Kim</td>
-                    <td>2024-01-22</td>
-                    <td class="order-phone">+1 (555) 567-8901</td>
-                    <td class="order-address">654 Cedar Ln, Seattle, WA 98101</td>
-                    <td><span class="order-paymentMethod order-paymentPaypal">💰 PayPal</span></td>
-                    <td>
-                        <select class="order-statusSelect pending">
-                            <option value="pending" selected>⏳ Pending</option>
-                        </select>
-                    </td>
-                    <td><button class="order-deleteBtn">Delete</button></td>
-                </tr>
+                <?php
+                // Check if there are any orders in the database
+                if (mysqli_num_rows($result) > 0) {
+                    // Loop through each order and display in table
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        // Generate formatted order ID
+                        $formatted_order_id = "#ORD" . str_pad($row['order_id'], 3, "0", STR_PAD_LEFT);
+                        
+                        // Combine address fields
+                        $full_address = $row['address_line1'];
+                        if (!empty($row['city'])) {
+                            $full_address .= ", " . $row['city'];
+                        }
+                        if (!empty($row['country'])) {
+                            $full_address .= ", " . $row['country'];
+                        }
+                        
+                        // Format the order date
+                        $order_date = "";
+                        if (!empty($row['order_date'])) {
+                            $timestamp = strtotime($row['order_date']);
+                            $order_date = date("Y-m-d", $timestamp);
+                        }
+                        
+                        // Set payment method class and icon
+                        $payment_class = "order-paymentMethod";
+                        $payment_icon = "💳";
+                        $payment_method_display = $row['payment_method'];
+                        
+                        switch(strtolower($row['payment_method'])) {
+                            case 'credit card':
+                            case 'credit':
+                                $payment_class .= " order-paymentCredit";
+                                $payment_icon = "💳";
+                                $payment_method_display = "Credit Card";
+                                break;
+                            case 'paypal':
+                                $payment_class .= " order-paymentPaypal";
+                                $payment_icon = "💰";
+                                $payment_method_display = "PayPal";
+                                break;
+                            case 'cash':
+                            case 'cash on delivery':
+                                $payment_class .= " order-paymentCash";
+                                $payment_icon = "💵";
+                                $payment_method_display = "Cash on Delivery";
+                                break;
+                            default:
+                                $payment_class .= " order-paymentCredit";
+                                $payment_icon = "💳";
+                        }
+                        
+                        // Set status select class and options
+                        $status_class = "order-statusSelect";
+                        $status_lower = strtolower($row['order_status']);
+                        
+                        switch($status_lower) {
+                            case 'pending':
+                                $status_class .= " pending";
+                                break;
+                            case 'processing':
+                                $status_class .= " processing";
+                                break;
+                            case 'shipped':
+                                $status_class .= " shipped";
+                                break;
+                            case 'delivered':
+                                $status_class .= " delivered";
+                                break;
+                            case 'cancelled':
+                                $status_class .= " cancelled";
+                                break;
+                            default:
+                                $status_class .= " pending";
+                        }
+                        ?>
+                        <tr>
+                            <td><input type="checkbox" class="order-checkbox"></td>
+                            <td><?php echo htmlspecialchars($formatted_order_id); ?></td>
+                            <td><?php echo htmlspecialchars($row['full_name']); ?></td>
+                            <td><?php echo htmlspecialchars($order_date); ?></td>
+                            <td class="order-phone"><?php echo htmlspecialchars($row['phone']); ?></td>
+                            <td class="order-address"><?php echo htmlspecialchars($full_address); ?></td>
+                            <td>
+                                <span class="<?php echo $payment_class; ?>">
+                                    <?php echo $payment_icon . " " . htmlspecialchars($payment_method_display); ?>
+                                </span>
+                            </td>
+                            <td>
+                                <select class="<?php echo $status_class; ?>" data-order-id="<?php echo $row['order_id']; ?>">
+                                    <option value="pending" <?php echo ($status_lower == 'pending') ? 'selected' : ''; ?>>⏳ Pending</option>
+                                    <option value="processing" <?php echo ($status_lower == 'processing') ? 'selected' : ''; ?>>🔄 Processing</option>
+                                    <option value="shipped" <?php echo ($status_lower == 'shipped') ? 'selected' : ''; ?>>📦 Shipped</option>
+                                    <option value="delivered" <?php echo ($status_lower == 'delivered') ? 'selected' : ''; ?>>✅ Delivered</option>
+                                    <option value="cancelled" <?php echo ($status_lower == 'cancelled') ? 'selected' : ''; ?>>❌ Cancelled</option>
+                                </select>
+                             </td>
+                            <td>
+                                <button class="order-deleteBtn" data-order-id="<?php echo $row['order_id']; ?>">Delete</button>
+                             </td>
+                         </>
+                        <?php
+                    }
+                } else {
+                    // Display a message if no orders found
+                    ?>
+                    <tr class="order-row">
+                        <td colspan="9" style="text-align: center; padding: 40px;">No orders found in the database.</td>
+                    </tr>
+                    <?php
+                }
+                
+                // Free result set and close connection
+                mysqli_free_result($result);
+                mysqli_close($conn);
+                ?>
             </tbody>
         </table>
     </div>
